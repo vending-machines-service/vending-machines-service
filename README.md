@@ -1,3 +1,9 @@
+# Description
+
+## Vending machines system application:
+
+Exist several vending machines. Every defined period of time each machine sends it's state, which contains information about products and money load and tech state of the machine. In the case of malfunction, lack of products or short change and in the case of full money box, system creates event of maintenance or repair. Every event assignes to one worker user. After successful maintanance or repair, event closes by worker. Worker saves all of the costs and stats of the work provided. Every day system saves average statistics by all of the machines, including count of sold products, malfunctions and average machines state. Manager is able to see current state of each machine in real time, search machines which require maintanance, observe statistics of total and average income, costs, find profitable, lossy, most and less popular machines and products. 
+
 | №    | rout                                                         | method | description                     | input      | output              |
 | ---- | ------------------------------------------------------------ | ------ | ------------------------------- | ---------- | ------------------- |
 | 1    | api/user                                                     | POST   | addUse                          | userDto    | OperationStatusEnum |
@@ -20,8 +26,8 @@
 | 18   | api/product/fl_remove/{productId:int}                        | GET    | flRemove                        | null       | OperationStatusEnum |
 | 19   | api/product/all                                              | GET    | getAllProduct                   | null       | ProductDto[]        |
 | 20   | api/stat/income/by_period?sinse={dateFrom}&until={dateTo}    | GET    | getIncomeByPeriod               | null       | Map<LocalDate,int>  |
-| 21   | api/stat/profit/avg/by_period?sinse={dateFrom}&until={dateTo} | GET    | getPeriodAvgProfit              | null       | Map<int, int>       |
-| 22   | api/stat/profit/avg/{machineId:int}/by_period?sinse={dateFrom}&until={dateTo} | GET    | getMachineAvgProfit             | null       | int                 |
+| 21   | api/stat/profit/avg/by_period?sinse={dateFrom}&until={dateTo} | GET    | getPeriodAvgProfit              | null       | float               |
+| 22   | api/stat/profit/avg/{machineId:int}/by_period?sinse={dateFrom}&until={dateTo} | GET    | getMachineAvgProfit             | null       | float               |
 | 23   | api/stat/profit/monthly/{machineId:int}/by_period?sinse={dateFrom}&until={dateTo} | GET    | getMonthlyMachineProfitByPeriod | null       | Map<String, int>    |
 | 24   | api/stat/product/income/{productId:int}/by_period?sinse={dateFrom}&until={dateTo} | GET    | getProductIncome                | null       | int                 |
 | 25   | api/stat/product/sell/{productId:int}/by_period?sinse={dateFrom}&until={dateTo} | GET    | getProductSellCount             | null       | int                 |
@@ -33,3 +39,12 @@
 | 31   | api/stat/machine/friquency/{machineId:int}/by_period?sinse={dateFrom}&until={dateTo} | GET    | getServiceFriquency             | null       | int                 |
 | 32   | api/stat/machine/broke_time/{machineId:int}&{year:int}       | GET    | getMachineBrokeTimeInYear       | null       | int                 |
 | 33   | api/stat/product/current                                     | GET    | getCurrentProuctsCount          | null       | Map<String, int>    |
+
+# questions
+
+1. kafka rest
+2. spring cloud config server
+3. event recors in mongo
+4. Check current state with local date ant timeout
+5. Records sql/mongo
+6. 
