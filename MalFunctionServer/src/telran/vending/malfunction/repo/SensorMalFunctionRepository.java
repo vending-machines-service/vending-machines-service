@@ -1,12 +1,11 @@
 package telran.vending.malfunction.repo;
 
-import java.time.LocalDate;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import telran.vending.malfunction.dto.SensorMongoDB;
 
-import telran.vending.malfunction.entity.SensorJpa;
+@Repository
+public interface SensorMalFunctionRepository extends MongoRepository<SensorMongoDB, String>{
 
-public interface SensorMalFunctionRepository extends JpaRepository<SensorJpa, Integer>{
-
-	boolean existsByMachineIdAndSensorId(int machineId, int sensorId);
 }

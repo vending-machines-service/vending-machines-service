@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -17,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import telran.vending.malfunction.dto.SensorData;
-import telran.vending.malfunction.entity.SensorJpa;
+import telran.vending.malfunction.dto.SensorMongoDB;
 import telran.vending.malfunction.repo.SensorMalFunctionRepository;
 
 @Service
@@ -32,22 +30,23 @@ public class MalFunctionService {
 	@StreamListener(Sink.INPUT)
 	public void getSensorData(String json) throws JsonParseException, JsonMappingException, IOException {
 			SensorData sensor = mapper.readValue(json, SensorData.class);
+			String id = String.format("%d-%d", sensor.machineId, sensor.sensorId);
 			
-			if(!malFunctionRepo.existsByMachineIdAndSensorId(sensor.machineId, sensor.sensorId)) {
+			if(!malFunctionRepo.existsById(id)) {
 				saveInDataBase(sensor);
 			}
 				
 	}
 	
-	@Transactional
+
 	private void saveInDataBase(SensorData sensor) {
-		SensorJpa sensorJpa = new SensorJpa(LocalDate.now(), 
-				sensor.machineId, sensor.sensorId, sensor.value);
-		malFunctionRepo.save(sensorJpa);
+		SensorMongoDB sensorDB = new SensorMongoDB(LocalDate.now(), sensor.machineId, 
+				sensor.sensorId, sensor.value);
+		malFunctionRepo.save(sensorDB);
 		
 	}
 	
-	public List<SensorJpa> getAllRecords(){
+	public List<SensorMongoDB> getAllRecords(){
 		return malFunctionRepo.findAll();
 	}
 			

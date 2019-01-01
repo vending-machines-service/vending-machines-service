@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import telran.vending.malfunction.dto.SensorData;
-import telran.vending.malfunction.entity.SensorJpa;
 import telran.vending.malfunction.repo.SensorMalFunctionRepository;
 import telran.vending.malfunction.service.MalFunctionService;
 
