@@ -40,11 +40,26 @@ Exist several vending machines. Every defined period of time each machine sends 
 | 32   | api/stat/machine/broke_time/{machineId:int}&{year:int}       | GET    | getMachineBrokeTimeInYear       | null       | int                 |
 | 33   | api/stat/product/current                                     | GET    | getCurrentProuctsCount          | null       | Map<String, int>    |
 
-# questions
+# kafka topics
 
-1. kafka rest
-2. spring cloud config server
-3. event recors in mongo
-4. Check current state with local date ant timeout
-5. Records sql/mongo
-6. 
+1. SENSOR_COMMON
+2. SENSOR_MALFUNCTION
+3. SENSOR_MAINTANANCE
+4. SENSOR_AVERAGE
+
+| Sensor_id   | name                |
+| ----------- | ------------------- |
+| C-{number}  | Crash sensor        |
+| MR-{number} | Money rest sensor   |
+| MI-{number} | Money income sensor |
+| P-{number}  | Product sensor      |
+|             |                     |
+
+Crash : [0-99]
+
+P: [100-499]
+
+MR: [500-699];
+
+MI: [700-999]
+
