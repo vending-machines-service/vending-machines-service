@@ -12,3 +12,10 @@ user: root password : 12345Com
 https://www.elephantsql.com
 Login by venmachine19@gmail.com
 
+Host                     ec2-23-21-244-254.compute-1.amazonaws.com
+Database                 ddlug2k78pjd8v
+User                     yvwvqajnxrjboj
+Port                     5432
+Password                 cfd4c7a61b8b8e8c982df420f8ecf082d0474435b12d7c4862eaf345054c430a
+URI                      postgres://yvwvqajnxrjboj:cfd4c7a61b8b8e8c982df420f8ecf082d0474435b12d7c4862eaf345054c430a@ec2-23-21-244-254.compute-1.amazonaws.com:5432/ddlug2k78pjd8v
+Heroku CLI               heroku pg:psql postgresql-closed-16129 --app datebase-carafka
